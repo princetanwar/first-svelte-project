@@ -2,6 +2,10 @@
   import Card from "./components/Card.svelte";
   import List from "./components/list.svelte";
   import { countStore } from "./stores/main.js";
+
+  import Editor from "./components/Editor.svelte";
+
+  let childRef;
 </script>
 
 <main>
@@ -11,6 +15,12 @@
     on:click={() => {
       countStore.increment();
     }}>increment</button
+  >
+  <Editor bind:this={childRef} />
+  <button
+    on:click={() => {
+      console.log(childRef.getContent());
+    }}>log editor data</button
   >
 
   <Card>
